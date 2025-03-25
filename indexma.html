@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy Text Buttons</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #ddd;
+            border: 1px solid #aaa;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Click to Copy Code Snippets</h2>
+
+    <button onclick="copyText(text1, 'MVC Code')">MVC</button>
+<button onclick="copyText(text2, 'RESTAPI')">corerestapi</button>
+<button onclick="copyText(text3, 'DImCon')">DImCon</button>
+<button onclick="copyText(text4, 'Vol&Netw')">Vol&Netw</button>
+<button onclick="copyText(text5, 'dockswarm')">Swarm</button>
+<button onclick="copyText(text6, 'CircleCI')">CircleCI</button>
+<button onclick="copyText(text7, 'Kubernetes')">kuber</button>
+<button onclick="copyText(text7, 'microservice')">MicAsp</button>
+
+    <p id="copiedMsg"></p>
+
+    <script>
+        var text1 = `a. StudentModel.cs:
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.ComponentModel.DataAnnotations;
+namespace _34_MA_Practical1.Models
+{
+    public class StudentModel
+    {
+        [Required(ErrorMessage = "Student Roll Number is required.")]
+        public string RollNo { get; set; }
+        [Required(ErrorMessage = "Student First Name is required.")]
+        public string FirstName { get; set; }
+        [Required(ErrorMessage = "Student Last Name is required.")]
+        public string LastName { get; set; }
+        [Required(ErrorMessage = "Student Address is required.")]
+        public string Address { get; set; }
+        [Required(ErrorMessage = "Student Class is required.")]
+        public string Class { get; set; }
+        [Required(ErrorMessage = "Student Age is required.")]
+        public string Age { get; set; }
+        [Required(ErrorMessage = "Student Contact Number is required.")]
+        public string ContactNumber { get; set; }
+    }
+}
+
+b. StudentController:
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using _34_MA_Practical1.Models;
+
+namespace _34_MA_Practical1.Controllers
+{
+    public class StudentController : Controller
+    {
+        public ActionResult Index()
+        {
+            return View();
+        }
+        public ActionResult Student()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Student(StudentModel obj)
+        {
+            ViewBag.Txt1 = "Congratulations!!! You have been Registered Successfully!!!";
+            ViewBag.Txt2 = "Your Details are as follows:";
+            ViewBag.Txt3 = "Roll Number = " + obj.RollNo;
+            ViewBag.Txt4 = "Name = " + obj.FirstName + " " + obj.LastName;
+            ViewBag.Txt5 = "Class = " + obj.Class;
+            ViewBag.Txt6 = "Address = " + obj.Address;
+            ViewBag.Txt7 = "Age = " + obj.Age;
+            ViewBag.Txt8 = "Contact Number = " + obj.ContactNumber;
+            ViewBag.Txt9 = "Thank You! We'll Get Back to you soon.";
+            return View();
+        }
+    }
+}
+
+c. Index.cshtml:
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Index</h2>
+
+d. Student.cshtml:
+@model _34_MA_Practical1.Models.StudentModel
+@{
+    ViewBag.Title = "Student";
+}
+<h2>Roshni Gupta's first ASP .Net MVC Application</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h4>Student Registration Form</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.RollNo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RollNo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RollNo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Class, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Class, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Class, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ContactNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ContactNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ContactNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+            <div class="col-md-offset-2 col-md-10 text-success">
+                <h3>@ViewBag.Txt1</h3>
+            </div>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+`;
+
+var text2 = `
+1(CheckingPrereqisites)
+dotnet
+dotnet --info
+dotnet new webapi -o Glossary(cretaing core rest api)
+(This command creates a folder named Glossary and generates inside it the content for the 
+ASP.NET project from the webapi template.)
+(Running the sample project)
+cd Glossary
+dotnet add package Swashbuckle.AspNetCore -s https://api.nuget.org/v3/index.json
+dotnet run
+(Point your browser to the address https://localhost:5001/weatherforecast)
+curl --insecure https://localhost:5001/weatherforecast (press Ctrl+C to stop the microservice)
+
+(Setting up a CRUD API:)
+To get started, remove the WeatherForecast.cs file from the root of the project and the
+WeatherForecastController.cs file from the Controllers folder.
+(Creating the model.)
+Go to Glossary folder → Right click → New → Text Document
+Code:
+//GlossaryItem.cs
+namespace Glossary
+{
+public class GlossaryItem
+{
+public string Term { get; set; }
+public string Definition { get; set; }
+}
+}
+
+Creating the controller:
+Now, you need to create the API controller to handle HTTP requests. Create the
+GlossaryController.cs in the Controllers folder and put the code inside it.
+Go to Controllers folder →Right click → New → Text Document
+Code:
+
+//Controllers/GlossaryController.cs
+using System;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
+using System.IO;
+namespace Glossary.Controllers
+{
+[ApiController]
+[Route("api/[controller]")]
+public class GlossaryController: ControllerBase
+{
+private static List<GlossaryItem> Glossary = new List<GlossaryItem> {
+new GlossaryItem
+{
+Term= "HTML",
+Definition = "Hypertext Markup Language"
+},
+new GlossaryItem
+{
+Term= "MVC",
+
+Definition = "Model View Controller"
+},
+new GlossaryItem
+{
+Term= "OpenID",
+Definition = "An open standard for authentication."
+}
+};
+//Getting a List of Items
+[HttpGet]
+public ActionResult<List<GlossaryItem>> Get()
+{
+return Ok(Glossary);
+}
+//Getting a Single Item
+[HttpGet]
+[Route("{term}")]
+public ActionResult<GlossaryItem> Get(string term)
+{
+var glossaryItem = Glossary.Find(item =>
+item.Term.Equals(term, StringComparison.InvariantCultureIgnoreCase));
+if (glossaryItem == null)
+{
+return NotFound();
+} else
+{
+return Ok(glossaryItem);
+}
+//This method checks if the requested term exists in the Glossary list and returns the
+glossary item.
+}
+//Creating a New Item
+[HttpPost]
+public ActionResult Post(GlossaryItem glossaryItem)
+{
+var existingGlossaryItem = Glossary.Find(item =>
+item.Term.Equals(glossaryItem.Term,
+StringComparison.InvariantCultureIgnoreCase));
+if (existingGlossaryItem != null)
+{
+return Conflict("Cannot create the term because it already exists.");
+}
+else
+{
+
+Glossary.Add(glossaryItem);
+var resourceUrl = Path.Combine(Request.Path.ToString(),
+Uri.EscapeUriString(glossaryItem.Term));
+return Created(resourceUrl, glossaryItem);
+}
+}
+//Updating an Item
+[HttpPut]
+public ActionResult Put(GlossaryItem glossaryItem)
+{
+var existingGlossaryItem = Glossary.Find(item =>
+item.Term.Equals(glossaryItem.Term,
+StringComparison.InvariantCultureIgnoreCase));
+if (existingGlossaryItem == null)
+{
+return NotFound("Cannot update a non existing term.");
+} else
+{
+existingGlossaryItem.Definition = glossaryItem.Definition;
+return Ok();
+}
+}
+//Deleting an Item
+[HttpDelete]
+[Route("{term}")]
+public ActionResult Delete(string term)
+{
+var glossaryItem = Glossary.Find(item =>
+item.Term.Equals(term, StringComparison.InvariantCultureIgnoreCase));
+if (glossaryItem == null)
+{
+return NotFound();
+}
+else
+{
+Glossary.Remove(glossaryItem);
+return NoContent();
+}
+}
+}
+}
+dotnet run
+
+(testing crud funct of glosssary api)
+curl --insecure https://localhost:5001/api/glossary
+curl --insecure https://localhost:5001/api/glossary/MVC
+curl --insecure https://localhost:5001/api/glossary/HTML
+curl --insecure https://localhost:5001/api/glossary/OpenID
+curl --insecure -X POST -d “{\”term\”:\”MFA\”,\”definition\”:\”An authentication process.\”}” -H “Content-Type:application/json” https://localhost:5001/api/glossary
+curl --insecure https://localhosst:5001/api/glossary
+curl --insecure -X PUT -d "{\"term\": \"MVC\", \"definition\":\"Modified record of Model View Controller.\"}" -H "Content-Type:application/json" https://localhost:5001/api/glossary
+curl --insecure https://localhost:5001/api/glossary/MVC
+curl --insecure -X PUT -d "{\"term\": \"MVP\", \"definition\":\"Modified record of Model View Controller.\"}" -H "Content-Type:application/json" https://localhost:5001/api/glossary
+curl --insecure --request DELETE --url https://localhost:5001/api/glossary/openid
+curl --insecure --request DELETE --url https://localhost:5001/api/glossary/janita
+
+`;
+
+var text3 = `
+1(Overviewof Docker : https://labs.play-with-docker.com/): 
+docker
+docer version
+2(BuildImagewithInbuilt)
+docker images
+docker pull rocker/versedo
+docker images
+3(Crete repo in dockerhub)
+docker login --username=guptaroshni2505(login)
+docker tag 5ac23be2bb6c guptaroshni2505/07_rg(tag an imageid into repo)
+docker push guptaroshni2505/07_rg(pushtheimage)
+docker images(list of images)
+4(DockerImage with DockerFile)
+cat > Dockerfile<<EOF
+FROM busybox
+CMD echo “Hello Everyone! This is Roshni’s first Docker Image.”
+EOF(create a dockrfile)
+docker build -t guptaroshni2505/07_rg .(build dockerimage)
+docker push guptaroshni2505/07_rg(push image to repo)
+docker run guptaroshni2505/07_rg(run and close the docker session)
+`;
+
+var text4 = `
+A(install S/W pckg on docker): https://labs.play-with-docker.com/
+Enable hyper-V & restart the system, launch docker-desk-appl, run winds cmd as administrator
+docker run ubuntu bash -c “apt-get -y update”
+docker run ubuntu bash -c “apt-get -y install nginx”
+docker ps -l
+B(wrking with docker olumes & nw theory)
+docker pull nginx
+docker run -it --name=webApp -d -p 80:80 nginx (Click on port80 to check)
+docker ps (list the running containers)
+docker exec -it webApp bash (this command to execute bash shell)
+cd /usr/share/nginx/html (to go inside html folder)
+echo “Hello ROSHNI”>index.html (to change content of index file
+exit
+docker ps(now refresh on por80)
+docker stop webApp
+docker run -it - -name=webApp1 -d -p 80:80 nginx(refresh to port80)
+docker volume create MyVolume
+docker volume ls
+docker volume inspect MyVolume
+docker run -d - - name=webApp4 - -mount source=MyVolume, destination=/usr/share/nginx/html -p 80:80 nginx
+(Note: Incase if you get error, change port number to 81 i.e: 81:80 in the command)
+ls /
+cd /var/lib/docker
+ls
+cd volumes
+ls
+cd MyVolume
+ls
+cd _data
+ls
+echo “from MyVolume hello ROSHNI” >index.html(now refresh port 81)
+docker stop webApp4
+docker run -d - -name=webApp6 - -mount source=MyVolume,destination=/usr/share/nginx/html -p 81:80 nginx
+(19.	Click on port 81 and refresh the page you should get edited file as output.)
+`;
+
+var text5 = `
+docker play-lab:
+docker swarm init --advertise-addr <MANAGER-IP>(tocreate new swarm)
+docker swarm init --advertise-addr 192.168.99.100
+docker info(current state of the swarm)
+docker node ls(info about nodes)
+(add nodes to the swarm)
+docker swarm join-token worker
+docker node ls
+(deploy a service to th swarm)
+docker service create --replicas 1 --name helloworld alpine ping docker.com
+docker service ls
+(Inspect a service)
+docker service inspect --pretty helloworld
+docker service ps helloworld
+docker ps
+(Scale the service in swarm)
+docker service scale helloworld=5
+docker service ps helloworld
+docker ps
+(delete the service running on the swarm)
+docker service rm helloworld
+docker service inspect helloworld
+docker ps
+`;
+
+var text6 = `
+1.	Creating a GitHub repository: Login into your github account, navigate to github and create a new repository.
+2.	Setting up CircleCI: by logging up with your GitHub account.
+Navigate to project page, you will be taken to the Projects dashboard. On the dashboard, select the project you want to set up (Hello_World) and click Set Up Project.
+Select the option to commit a starter CI pipeline to a new branch, and click Set Up Project.
+This will create a file .circleci/config.yml at the root of your repository on a new branch called circleci-project-setup.
+Select Faster and Setup the project:
+You will have your first green build. If you are happy with this configuration, you can merge it into your main branch later.
+3.	Digging into your first pipeline.
+Click on the say-hello-workflow button on your pipeline to investigate the following parts of the run:
+Within this workflow, the pipeline ran one job, called say-hello. Click say-hello.
+You can see the steps present in the job, click on them to view their functionality:
+a.	Spin up environment:
+b.	Preparing environment variables:
+c.	Checkout code:
+d.	Say hello:
+e.	Breaking your build!
+Let’s get a bit more complex. Let’s edit our .circleci/config.yml file now.
+i.	Navigate to your project by clicking on the job say-hello(1), it will launch the following page, click on the circle-project-setup link present under Branch/Commit.
+ii.	Now click on the Edit Config tab, following page of config.yml will get launched. 
+iii.	Now you can see the config.yml code file.
+iv.	Replace the text as shown below: You can change printing statement by any random text.
+v.	Save and Run, it will launch following prompt, click on Commit Changes.
+vi.	Wait till the process gets completed.
+vii.	Once process get completed you can see the following
+window: Click on say-hello, it will fetch another window tab.
+viii.	Click on Hello_World project to view jobs.
+Now, notice that you have two jobs present under your project.
+ix.	Check the tests of both jobs.
+Click on say-hello 1 to view steps.
+Check the functionality test done under say hello.
+x.	Click on say-hello 2 to view steps.
+Check the functionality test done under Say hello.
+`;
+
+var text7 = `
+minikube version
+minikube start
+kubectl version
+kubectl cluster-info
+kubectl get nodes
+kubectl create deployment kubernetes-bootcamp --image=gcr.io/google-samples/kubernetes-bootcamp:v1
+kubectl get deployments
+View:
+2nd terminal:
+echo -e "\n\n\n\e[92mStarting Proxy. After starting it will not output a response. Please click the first Terminal Tab\n"; 
+kubectl proxy
+1st terminal:
+curl http://localhost:8001/version 
+export POD_NAME=$(kubectl get pods -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}') 
+echo Name of the Pod: $POD_NAME
+curl http://localhost:8001/api/v1/namespaces/default/pods/$POD_NAME/ 
+explore:
+kubectl get pods
+kubectl describe pods
+kubectl expose deployment/kubernetes-bootcamp --type="NodePort" --port 8080
+kubectl get services
+new term:
+echo -e "\n\n\n\e[92mStarting Proxy. After starting it will not output a response. Please click the first Terminal Tab\n"; 
+kubectl proxy
+1st
+export POD_NAME=$(kubectl get pods -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}') 
+echo Name of the Pod: $POD_NAME  
+curl http://localhost:8001/api/v1/namespaces/default/pods/$POD_NAME/proxy/ 
+kubectl logs $POD_NAME 
+kubectl exec $POD_NAME -- env
+kubectl exec -ti $POD_NAME -- bash 
+cat server.js 
+curl localhost:8080
+exit 
+new service:
+kubectl get pods 
+ kubectl get services 
+kubectl expose deployment/kubernetes-bootcamp --type="NodePort" --port 8080 
+ kubectl get services 
+kubectl describe services/kubernetes-bootcamp 
+ export NODE_PORT=$(kubectl get services/kubernetes-bootcamp -o go- template='{{(index .spec.ports 0).nodePort}}') 
+echo NODE_PORT=$NODE_PORT 
+ curl $(minikube ip):$NODE_PORT 
+kubectl describe deployment 
+kubectl get pods -l app=kubernetes-bootcamp 
+ kubectl get services -l app=kubernetes-bootcamp
+export POD_NAME=$(kubectl get pods -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}') 
+echo Name of the Pod: $POD_NAME 
+ kubectl label pods $POD_NAME version=v1 
+kubectl describe pods $POD_NAME 
+ kubectl get pods -l version=v1 
+deleting:
+  kubectl delete service -l app=kubernetes-bootcamp
+kubectl get services 
+curl $(minikube ip):$NODE_PORT 
+kubectl exec -ti $POD_NAME -- curl localhost:8080 
+
+`;
+
+var text8 = `
+Product.cs:
+namespace MaPract8.Models
+{
+    public class Product
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public decimal Price { get; set; }
+        public int CategoryId { get; set; }
+    }
+}
+Category.cs:
+namespace MaPract8.Models
+{
+    public class Category
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+    }
+}
+ProductContext.cs:
+using Microsoft.EntityFrameworkCore;
+using MaPract8.Models;
+
+namespace MaPract8.DBContexts
+{
+    public class ProductContext : DbContext
+    {
+        public ProductContext(DbContextOptions<ProductContext> options) : base(options) { }
+
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Category> Categories { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Category>().HasData(
+                new Category { Id = 1, Name = "Electronics", Description = "Electronic Items" },
+                new Category { Id = 2, Name = "Clothes", Description = "Dresses" },
+                new Category { Id = 3, Name = "Grocery", Description = "Grocery Items" }
+            );
+        }
+    }
+}
+ProductRepositor.cs:
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using MaPract8.DBContexts;
+using MaPract8.Models;
+
+namespace MaPract8.Repository
+{
+    public class ProductRepository : IProductRepository
+    {
+        private readonly ProductContext _dbContext;
+
+        public ProductRepository(ProductContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
+        public IEnumerable<Product> GetProducts() => _dbContext.Products.ToList();
+
+        public Product GetProductByID(int productId) => _dbContext.Products.Find(productId);
+
+        public void InsertProduct(Product product)
+        {
+            _dbContext.Add(product);
+            Save();
+        }
+
+        public void DeleteProduct(int productId)
+        {
+            var product = _dbContext.Products.Find(productId);
+            _dbContext.Products.Remove(product);
+            Save();
+        }
+
+        public void UpdateProduct(Product product)
+        {
+            _dbContext.Entry(product).State = EntityState.Modified;
+            Save();
+        }
+
+        public void Save() => _dbContext.SaveChanges();
+    }
+}
+
+ProductController.cs:
+using Microsoft.AspNetCore.Mvc;
+using MaPract8.Models;
+using MaPract8.Repository;
+using System.Collections.Generic;
+using System.Transactions;
+
+namespace MaPract8.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ProductController : ControllerBase
+    {
+        private readonly IProductRepository _productRepository;
+
+        public ProductController(IProductRepository productRepository)
+        {
+            _productRepository = productRepository;
+        }
+
+        [HttpGet]
+        public IActionResult Get() => Ok(_productRepository.GetProducts());
+
+        [HttpGet("{id}")]
+        public IActionResult Get(int id) => Ok(_productRepository.GetProductByID(id));
+
+        [HttpPost]
+        public IActionResult Post([FromBody] Product product)
+        {
+            using var scope = new TransactionScope();
+            _productRepository.InsertProduct(product);
+            scope.Complete();
+            return CreatedAtAction(nameof(Get), new { id = product.Id }, product);
+        }
+
+        [HttpPut]
+        public IActionResult Put([FromBody] Product product)
+        {
+            if (product == null) return NoContent();
+            using var scope = new TransactionScope();
+            _productRepository.UpdateProduct(product);
+            scope.Complete();
+            return Ok();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _productRepository.DeleteProduct(id);
+            return Ok();
+        }
+    }
+}
+
+startup.cs:
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+using MaPract8.DBContexts;
+using MaPract8.Repository;
+
+namespace MaPract8
+{
+    public class Startup
+    {
+        public Startup(IConfiguration configuration) { Configuration = configuration; }
+
+        public IConfiguration Configuration { get; }
+
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddDbContext<ProductContext>(o => o.UseSqlServer(Configuration.GetConnectionString("productdb")));
+            services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddControllers();
+        }
+
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
+            app.UseRouting();
+            app.UseAuthorization();
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+        }
+    }
+}
+appsettings.json (Database Connection):
+{
+  "ConnectionStrings": {
+    "productdb": "Server=YourServerName;Database=productsdb;Trusted_Connection=True;"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "AllowedHosts": "*"
+}
+
+`;
+
+        function copyText(text, name) {
+            navigator.clipboard.writeText(text).then(function () {
+                document.getElementById('copiedMsg').innerHTML = `Copied: ${name}`;
+            }).catch(function (err) {
+                console.error('Unable to copy text', err);
+            });
+        }
+    </script>
+
+</body>
+</html>
